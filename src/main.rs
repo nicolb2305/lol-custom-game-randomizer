@@ -1,8 +1,6 @@
 use eyre::{ContextCompat, Result};
 use itertools::Itertools;
 use rand::prelude::*;
-use std::thread::sleep;
-use std::time::Duration;
 
 use crate::client::Client;
 use crate::types::LolChatConversationMessageResource;
@@ -27,7 +25,6 @@ fn main() -> Result<()> {
         .collect_tuple()
         .context("Failed to create two teams")?;
     let teams_output = format!(".\nTeam 1:\n{team1}\n----------\nTeam 2:\n{team2}");
-    sleep(Duration::new(10, 0));
 
     // Find custom game chat
     let conversations = client.get_lol_chat_v1_conversations()?;
